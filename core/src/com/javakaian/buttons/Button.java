@@ -13,28 +13,24 @@ public class Button implements GameObject
 	private TextureRegion buttonImage;
 	private float xKord,yKord,width,height;
 	
-	/// BUTTON ANIMASYONU
-	private float btnMaxWidth, btnMaxHeight;
-	private double time=0,animTime=0.5;
-	///button animasyonu
+	private float maxWidth, maxHeight;
+	
 	private Rectangle buttonRect;
 	
-	
+	private float time=0;
+	private int animTime=4;
 	
 	public Button(float xKord,float yKord, TextureRegion buttonImage)
 	{
 		this.buttonImage =buttonImage;
 		this.xKord=xKord;
 		this.yKord=yKord;
-		//width=(Gdx.graphics.getWidth()*2)/3;
-		//height=(float) (width*0.2);
-		
-		///button animasyonu
 		width=0;
 		height=0;
-		btnMaxWidth=(Gdx.graphics.getWidth()*2)/3;
-		btnMaxHeight=(float)(btnMaxWidth*0.2);
-		///button animasyonu
+		maxWidth=(Gdx.graphics.getWidth()*2)/3;
+		maxHeight=(float) (maxWidth*0.2);
+		
+		
 		
 		buttonRect  = new Rectangle(xKord, yKord, width, height);
 	}
@@ -43,17 +39,13 @@ public class Button implements GameObject
 		this.xKord=0;
 		
 		buttonImage=ImageLoader.backButton;
-		//this.width=(Gdx.graphics.getWidth())/3;
-		//this.height=(float) (width*0.4);
-		//this.yKord=Gdx.graphics.getHeight()-height;
-		
-		//button animasyonu
 		width=0;
 		height=0;
-		btnMaxWidth=Gdx.graphics.getWidth()/3;
-		btnMaxHeight=(float)(btnMaxWidth*0.4);
-		this.yKord=Gdx.graphics.getHeight()-btnMaxHeight;
-		//button animasyonu
+		this.maxWidth=(Gdx.graphics.getWidth())/3;
+		this.maxHeight=(float) (maxWidth*0.4);
+		this.yKord=Gdx.graphics.getHeight()-maxHeight;
+		
+		
 		buttonRect  = new Rectangle(xKord, yKord, width, height);
 	}
 	
@@ -70,25 +62,26 @@ public class Button implements GameObject
 	
 	public void update(float delta) 
 	{
-		///////////////button animasyon
-		time+=delta;
+	
+		buttonRect.width=width;
+		buttonRect.height=height;
 		
+		time=time+delta;
 		if(time<animTime)
 		{
-				if(width<btnMaxWidth)
-				{
-					width+=(btnMaxWidth/30);
-					
-				}
-				if(height<btnMaxHeight)
-				{
-					height+=(btnMaxWidth/30);
-					
-				}
-				buttonRect.width=width;
-				buttonRect.height=height;
+			if(width<maxWidth)
+			{
+				width+=5;
+			}
+		
+			if(height<maxHeight)
+			{
+				height++;
+			}
+			
 		}
-		//button animasyonu
+		
+		
 	}
 	public Rectangle getButtonRect()
 	{
