@@ -110,7 +110,8 @@ public class PlayState extends State
 	{
 		if(Collision.isThereCollision(gm.getPlayer(), gm.getCarHandler()))
 		{
-			sm.pushState(new MenuState(sm));
+			///////
+			sm.pushState(new GameOverState(sm));
 		}
 	}
 	

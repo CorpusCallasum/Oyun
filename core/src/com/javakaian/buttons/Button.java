@@ -71,7 +71,7 @@ public class Button implements GameObject
 		{
 			if(width<maxWidth)
 			{
-				width+=5;
+				width+=3;
 			}
 		
 			if(height<maxHeight)

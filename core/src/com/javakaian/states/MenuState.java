@@ -1,6 +1,7 @@
 package com.javakaian.states;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.javakaian.buttons.Button;
 import com.javakaian.imageloader.ImageLoader;
@@ -16,6 +17,7 @@ public class MenuState extends State
 	private float buttonY;
 	
 	
+	
 	public MenuState(StateManager sm) {
 		super(sm);
 		
@@ -27,6 +29,8 @@ public class MenuState extends State
 		playButton = new Button(buttonX, buttonY,ImageLoader.playButtonRegion);
 		optionsButton = new Button(buttonX,buttonY*2, ImageLoader.options);
 		aboutButton = new Button(buttonX, buttonY*3, ImageLoader.about);
+		
+		
 	}
 
 
@@ -38,10 +42,13 @@ public class MenuState extends State
 		
 		sb.draw(ImageLoader.bgRegion, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		
+		
+		
 		sb.end();
 		playButton.render(sb);
 		optionsButton.render(sb);
 		aboutButton.render(sb);
+		
 		
 	}
 

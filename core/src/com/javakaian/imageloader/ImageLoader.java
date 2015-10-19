@@ -2,6 +2,8 @@ package com.javakaian.imageloader;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.Texture.TextureFilter;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class ImageLoader 
@@ -14,8 +16,20 @@ public class ImageLoader
 	/////////
 	public static TextureRegion levelBox;
 	
+	
+	///
+	public static BitmapFont font;
+	public static Texture fontTexture;
+	
 	public static void load()
 	{
+		font = new BitmapFont(Gdx.files.internal("font.fnt"),true);
+		
+		
+		fontTexture = new Texture(Gdx.files.internal("font.png"));
+		fontTexture.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+		
+		
 		text = new Texture(Gdx.files.internal("gametexture.png"));
 		
 		arabatexture = new Texture(Gdx.files.internal("arabatexture.png"));
@@ -51,8 +65,11 @@ public class ImageLoader
 	
 	public static void dispose()
 	{
+		font.dispose();
+		fontTexture.dispose();
 		text.dispose();
 		arabatexture.dispose();
+		
 	}
 
 }
