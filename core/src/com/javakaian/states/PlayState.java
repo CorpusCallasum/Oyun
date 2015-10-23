@@ -8,7 +8,9 @@ import com.javakaian.collision.Collision;
 import com.javakaian.gameobject.GameWorld;
 import com.javakaian.gameobject.Player;
 import com.javakaian.handler.HighScoreDrawer;
+
 import com.javakaian.imageloader.ImageLoader;
+import com.javakaian.inputhandler.HighScoreHandler;
 import com.javakaian.inputhandler.PlayStateInput;
 
 
@@ -20,7 +22,8 @@ public class PlayState extends State
 	
 	private StateManager sm;
 	
-	private int highScore=0;
+	private int score=0;
+	private int highScore;
 	private HighScoreDrawer highScoreDrawer;
 	private OrthographicCamera cam;
 	
@@ -32,8 +35,9 @@ public class PlayState extends State
 		highScoreDrawer = new HighScoreDrawer(this);
 		this.sm=sm;
 		gm = new GameWorld(this);
-		
+		highScore=HighScoreHandler.getHighScore();
 		Gdx.input.setInputProcessor(new PlayStateInput(this));
+		
 		
 		
 	}
@@ -69,6 +73,11 @@ public class PlayState extends State
 		
 		updateCamera();
 		checkCollision();
+		if(score>highScore)
+		{
+			highScore=score;
+			HighScoreHandler.setHighScore(highScore);
+		}
 		
 		
 	}
@@ -129,19 +138,20 @@ public class PlayState extends State
 	{
 		return sm;
 	}
-	public int getHighScore()
+	public int getScore()
 	{
-		return highScore;
+		return score;
 	}
-	public void setHighScore(int highScore)
+	public void setScore(int score)
 	{
-		this.highScore=highScore;
+		this.score=score;
 	}
 
 	public OrthographicCamera getCam()
 	{
 		return cam;
 	}
+	
 	
 
 }

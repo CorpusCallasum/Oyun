@@ -34,7 +34,7 @@ public class CarHandler
 			if(carList.get(i).getPosition().y>player.getPosition().y+Gdx.graphics.getHeight()/2)
 			{
 				
-				playState.setHighScore(playState.getHighScore()+1);
+				playState.setScore(playState.getScore()+1);
 				carList.remove(i);
 				carList.add(new Car(randXkord.nextInt(Gdx.graphics.getWidth()-100),player.getPosition().y-(2*Gdx.graphics.getHeight()/3)));
 			}

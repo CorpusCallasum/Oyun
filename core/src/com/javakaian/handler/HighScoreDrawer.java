@@ -23,7 +23,7 @@ public class HighScoreDrawer
 		y=(playState.getCam().position.y)-Gdx.graphics.getHeight()/2;
 		scoreY=y;
 		ImageLoader.font.draw(sb, "Score:", x, y);
-		ImageLoader.font.draw(sb, String.valueOf(playState.getHighScore()),scoreX,scoreY);
+		ImageLoader.font.draw(sb, String.valueOf(playState.getScore()),scoreX,scoreY);
 		
 		
 		sb.end();

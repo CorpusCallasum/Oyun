@@ -6,7 +6,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
 import com.javakaian.imageloader.ImageLoader;
+import com.javakaian.inputhandler.HighScoreHandler;
 import com.javakaian.states.MenuState;
 import com.javakaian.states.PlayState;
 import com.javakaian.states.StateManager;
@@ -29,6 +31,7 @@ public class TapMe extends Game
 		Gdx.gl.glClearColor(0.1f, 0.1f, 0.1f, 1);
 		
 		ImageLoader.load();
+		HighScoreHandler.load();
 		
 		sb = new SpriteBatch();
 		

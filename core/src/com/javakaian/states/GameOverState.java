@@ -2,8 +2,10 @@ package com.javakaian.states;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
 import com.javakaian.imageloader.ImageLoader;
 import com.javakaian.inputhandler.GameOverInput;
+import com.javakaian.inputhandler.HighScoreHandler;
 
 public class GameOverState extends State
 {
@@ -24,7 +26,7 @@ public class GameOverState extends State
 		
 		ImageLoader.font.draw(sb, "Game", 100, 50);
 		ImageLoader.font.draw(sb, "Over", 100, 150);
-		
+		ImageLoader.font.draw(sb, String.valueOf(HighScoreHandler.getHighScore()), 0, 250);
 		
 		sb.end();
 		
