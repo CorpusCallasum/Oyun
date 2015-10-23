@@ -10,6 +10,8 @@ import com.javakaian.controller.Controller;
 import com.javakaian.handler.BgHandler;
 import com.javakaian.handler.CarHandler;
 
+import com.javakaian.states.PlayState;
+
 
 
 
@@ -31,8 +33,9 @@ public class GameWorld implements GameObject
 	
 	
 	
-	public GameWorld()
+	public GameWorld(PlayState playState)
 	{
+		
 		controller = new Controller(2*Gdx.graphics.getWidth()/10,
 				Gdx.graphics.getHeight()-2*Gdx.graphics.getWidth()/10,
 				Gdx.graphics.getWidth()/10);
@@ -42,7 +45,7 @@ public class GameWorld implements GameObject
 				Gdx.graphics.getWidth()/5 ,controller);
 		
 		bgHandler = new BgHandler(player);
-		carHandler = new CarHandler(player);
+		carHandler = new CarHandler(player,playState);
 		
 		
 		

@@ -1,12 +1,13 @@
 package com.javakaian.states;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.javakaian.buttons.Button;
 import com.javakaian.collision.Collision;
 import com.javakaian.gameobject.GameWorld;
 import com.javakaian.gameobject.Player;
-
+import com.javakaian.handler.HighScoreDrawer;
 import com.javakaian.imageloader.ImageLoader;
 import com.javakaian.inputhandler.PlayStateInput;
 
@@ -19,19 +20,23 @@ public class PlayState extends State
 	
 	private StateManager sm;
 	
-	
+	private int highScore=0;
+	private HighScoreDrawer highScoreDrawer;
+	private OrthographicCamera cam;
 	
 	public PlayState(StateManager sm)
 	{
 		
 		super(sm);
+		cam = camera;
+		highScoreDrawer = new HighScoreDrawer(this);
 		this.sm=sm;
-		gm = new GameWorld();
+		gm = new GameWorld(this);
 		
 		Gdx.input.setInputProcessor(new PlayStateInput(this));
 		
+		
 	}
-	
 	
 	
 	
@@ -42,11 +47,9 @@ public class PlayState extends State
 		sb.setProjectionMatrix(camera.combined);
 		
 		
-	
+		
 		gm.render(sb);
-		
-		
-		
+		highScoreDrawer.render(sb);
 	}
 	
 	
@@ -126,7 +129,19 @@ public class PlayState extends State
 	{
 		return sm;
 	}
-	
+	public int getHighScore()
+	{
+		return highScore;
+	}
+	public void setHighScore(int highScore)
+	{
+		this.highScore=highScore;
+	}
+
+	public OrthographicCamera getCam()
+	{
+		return cam;
+	}
 	
 
 }

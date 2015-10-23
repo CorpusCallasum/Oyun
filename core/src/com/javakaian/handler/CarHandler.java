@@ -7,14 +7,18 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.javakaian.gameobject.Car;
 import com.javakaian.gameobject.Player;
+import com.javakaian.states.PlayState;
 
 public class CarHandler 
 {
 	private ArrayList<Car> carList;
 	private Player player;
 	private Random randXkord;
-	public CarHandler(Player player)
+	private PlayState playState;
+	
+	public CarHandler(Player player,PlayState playState)
 	{
+		this.playState=playState;
 		this.player=player;
 		carList = new ArrayList<Car>();
 		carList.add(new Car(Gdx.graphics.getWidth()/2,200));
@@ -29,6 +33,8 @@ public class CarHandler
 			
 			if(carList.get(i).getPosition().y>player.getPosition().y+Gdx.graphics.getHeight()/2)
 			{
+				
+				playState.setHighScore(playState.getHighScore()+1);
 				carList.remove(i);
 				carList.add(new Car(randXkord.nextInt(Gdx.graphics.getWidth()-100),player.getPosition().y-(2*Gdx.graphics.getHeight()/3)));
 			}
