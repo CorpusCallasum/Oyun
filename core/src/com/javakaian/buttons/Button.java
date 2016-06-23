@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.javakaian.gameobject.GameObject;
 import com.javakaian.imageloader.ImageLoader;
-
+// git yorumu
 public class Button implements GameObject
 {
 
